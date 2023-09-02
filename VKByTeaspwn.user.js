@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      1.3
+// @version      1.4
 // @description  VK By Teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -100,12 +100,12 @@ function TopName() {
         if (name) {
         var namealt = name.alt
     }
-var s = document.querySelector('a#top_profile_link');
-var q = document.createElement('div');
-q.classList.add("top_profile_name");
-q.innerHTML = `` + namealt + ``;
+var profilelink = document.querySelector('a#top_profile_link');
+var profilenamediv = document.createElement('div');
+profilenamediv.classList.add("top_profile_name");
+profilenamediv.innerHTML = namealt;
 if (namealt != null) {
-       s.insertBefore(q, s.firstChild)
+       profilelink.insertBefore(profilenamediv, profilelink.firstChild)
     }
 }
 function topmenu() {
@@ -119,7 +119,6 @@ function topmenu() {
     var AccountSwticherDiv = document.querySelector("#react_rootEcosystemMultiAccountsEntry");
     var MyProfileSpan = document.querySelector("#l_pr > a > span > span");
     var MenuButtonTop = document.querySelector("#top_profile_link");
-    var s = document.querySelector('a#top_profile_link');
     var Myprofilebutton = document.createElement('a');
     var EditButton = document.createElement('a');
     var VKIDButton = document.createElement('a');
@@ -133,14 +132,12 @@ EditButton.setAttribute("id", "top_edit_link");
 VKIDButton.setAttribute("id", "top_vkid_link");
 AccountSwitcherButton.setAttribute("id", "top_accswitch_link");
 AccountSwitcherButton.addEventListener ("click", showSwitcher , false);
-AccountSwitcherButton.addEventListener ("click", MenuButtonTop , false);
 EditButton.href = ("/edit");
 VKIDButton.href = ("https://id.vk.com/account/#/main");
     if (Profilelnk) {
         Myprofilebutton.href = Profilelnk.href
     }
-if (MyProfileSpan) {
-Myprofilebutton.innerHTML += `<div class="menu_item_icon"><svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M5.84 15.63a6.97 6.97 0 0 0 8.32 0 8.2 8.2 0 0 0-8.32 0zM4.7 14.57a7 7 0 1 1 10.6 0 9.7 9.7 0 0 0-10.6 0zM10 1.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17zm-1.5 7a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0zm1.5-3a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="currentColor" fill-rule="evenodd"></path></svg></div> <span>${MyProfileSpan.textContent}</span>`;}
+Myprofilebutton.innerHTML += `<div class="menu_item_icon"><svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M5.84 15.63a6.97 6.97 0 0 0 8.32 0 8.2 8.2 0 0 0-8.32 0zM4.7 14.57a7 7 0 1 1 10.6 0 9.7 9.7 0 0 0-10.6 0zM10 1.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17zm-1.5 7a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0zm1.5-3a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="currentColor" fill-rule="evenodd"></path></svg></div> <span>${lang.stories_live_ended_open_user}</span>`;
 EditButton.innerHTML += `<div class="menu_item_icon"><svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M16.583 9.293a1.001 1.001 0 0 1 1.416 0l.708.708a1.001 1.001 0 0 1 0 1.416l-.708.708-2.124-2.124.708-.708Zm-1.689 1.688 2.124 2.124-4.338 4.338a4.005 4.005 0 0 1-1.565.968l-1.72.573a.3.3 0 0 1-.38-.38l.574-1.72a4.005 4.005 0 0 1 .967-1.565l4.338-4.338Z" fill="currentColor" fill-rule="evenodd"></path> <path fill="currentColor" fill-rule="evenodd" d="M10 2.5C8.636 2.5 7.557 3.602 7.557 5S8.637 7.5 10 7.5c1.398 0 2.557-1.136 2.557-2.5S11.397 2.5 10 2.5ZM6.057 5c0-2.192 1.717-4 3.943-4 2.192 0 4.057 1.774 4.057 4S12.192 9 10 9C7.774 9 6.057 7.192 6.057 5Zm-.274 7.833c-1.04.54-1.63 1.283-1.76 2.194-.05.347-.024.758.12 1.044.066.131.15.227.262.295.112.068.294.134.595.134h2A.75.75 0 0 1 7 18H5c-.528 0-.99-.118-1.375-.353a2.194 2.194 0 0 1-.823-.903c-.332-.664-.337-1.418-.264-1.93.216-1.514 1.209-2.615 2.554-3.312 1.03-.534 2.292-.85 3.67-.967a14.735 14.735 0 0 1 1.243-.051l1.25.046c.468 0 .791.362.75.806-.042.445-.337.734-.75.704l-1.25-.056c-.43 0-.846.02-1.244.057-1.174.112-2.191.384-2.978.792Z" clip-rule="evenodd"></path> </svg></div> <span>${lang.global_edit}</span>`;
 VKIDButton.innerHTML += `<div class="menu_item_icon"><svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10.154 2.508a1.25 1.25 0 0 0-.308 0c-.099.013-.203.043-.589.166L4.592 4.158c-.21.067-.33.106-.42.141a.533.533 0 0 0-.081.038.25.25 0 0 0-.073.099.535.535 0 0 0-.01.09A7.253 7.253 0 0 0 4 4.967v5.69c0 1.857.993 3.354 2.262 4.513 1.27 1.159 2.74 1.908 3.506 2.25.09.04.126.056.154.067a.236.236 0 0 0 .156 0c.028-.011.065-.027.154-.067.766-.342 2.237-1.091 3.506-2.25C15.008 14.012 16 12.515 16 10.658v-5.69c0-.22 0-.347-.007-.443a.525.525 0 0 0-.011-.09.249.249 0 0 0-.072-.098.53.53 0 0 0-.082-.038 7.249 7.249 0 0 0-.42-.14l-4.665-1.485c-.386-.123-.49-.153-.59-.166Zm5.757 1.83-.002-.001Zm.07.096v.002Zm-11.962 0v.002Zm.07-.096.002-.001ZM9.662 1.02a2.75 2.75 0 0 1 .676 0c.269.033.526.118.86.224l4.665 1.485.08.025c.316.1.653.206.917.422.229.188.406.431.516.706.126.317.125.67.124 1.002v5.774c0 2.44-1.314 4.309-2.75 5.62-1.438 1.313-3.072 2.14-3.906 2.512-.152.069-.318.147-.55.186-.177.03-.411.03-.587 0-.233-.04-.399-.117-.551-.186-.833-.372-2.468-1.199-3.905-2.511-1.437-1.312-2.751-3.181-2.751-5.62V4.883c-.001-.332-.002-.685.124-1.002a1.75 1.75 0 0 1 .516-.706c.264-.216.6-.322.917-.422l.08-.025 4.665-1.485c.335-.106.591-.19.86-.224ZM13.76 7.2a.75.75 0 0 1 .04 1.06l-4.179 4.5a.75.75 0 0 1-1.1 0l-2.32-2.5A.75.75 0 1 1 7.3 9.24l1.771 1.908 3.63-3.908a.75.75 0 0 1 1.06-.04Z" fill="currentColor" fill-rule="evenodd"></path></svg></div> <span>VK ID</span>`;
 AccountSwitcherButton.innerHTML += `<div class="menu_item_icon"><svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor"><g clip-rule="evenodd" fill-rule="evenodd"><path d="M6.25 3.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm-1.5 3a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0zm-2.06 5.07c.96-.55 2.22-.82 3.56-.82s2.6.27 3.56.82c.98.56 1.69 1.47 1.69 2.68 0 .7-.28 1.3-.78 1.71-.48.39-1.1.54-1.72.54H3.5c-.61 0-1.24-.15-1.72-.54-.5-.4-.78-1-.78-1.71 0-1.21.71-2.12 1.69-2.68zm.75 1.3c-.65.37-.94.84-.94 1.38 0 .3.1.44.22.54.14.11.4.21.78.21H9c.39 0 .64-.1.78-.21.12-.1.22-.25.22-.54 0-.54-.29-1-.94-1.38-.66-.39-1.65-.62-2.81-.62s-2.15.23-2.81.62zM13.75 3.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm-1.5 3a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0z"></path></g><path d="M13.75 12.25c-.23 0-.45.01-.68.03a.75.75 0 1 1-.14-1.49c.27-.03.54-.04.82-.04 1.34 0 2.6.27 3.56.82.98.56 1.69 1.47 1.69 2.68 0 .7-.28 1.3-.78 1.71-.48.39-1.1.54-1.72.54h-3a.75.75 0 0 1 0-1.5h3c.39 0 .64-.1.78-.21.12-.1.22-.25.22-.54 0-.54-.29-1-.94-1.38a5.77 5.77 0 0 0-2.81-.62z"></path></g></svg></div> <span>${getString("switchAccount", language)}</span> <span class="accswitcharrow"><svg fill="none" height="16" viewBox="0 0 12 16" width="16" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M4.22 3.47a.75.75 0 0 1 1.06 0l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 0 1-1.06-1.06L7.69 8 4.22 4.53a.75.75 0 0 1 0-1.06z" fill="currentColor" fill-rule="evenodd"></path></svg></span>`;
@@ -186,16 +183,6 @@ var AccountSwticherButton = document.getElementById("top_accswitch_link");
     AccountSwticherDiv.classList.remove("active");
     AccountSwticherButton.classList.remove("active");
   }
-}
- function MenuCheck(event) {
-var Menu = document.getElementById("top_profile_menu");
-var AccountSwticherDiv = document.getElementById("react_rootEcosystemMultiAccountsEntry");
-var AccountSwticherButton = document.getElementById("top_accswitch_link");
-var MenuButtonTop = document.querySelector("#top_profile_link")
-if (!MenuButtonTop.classList.contains('active')) {
-AccountSwticherDiv.classList.remove("active");
-AccountSwticherButton.classList.remove("active");
-}
 }
 const customcss = document.createElement('style');
 customcss.innerHTML = `
