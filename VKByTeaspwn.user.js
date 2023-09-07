@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      1.4
+// @version      1.5
 // @description  VK By Teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -119,6 +119,8 @@ function topmenu() {
     var AccountSwticherDiv = document.querySelector("#react_rootEcosystemMultiAccountsEntry");
     var MyProfileSpan = document.querySelector("#l_pr > a > span > span");
     var MenuButtonTop = document.querySelector("#top_profile_link");
+    var VKNextMenuA = document.querySelector("#top_profile_menu > a.NKkdPOArTPmbp0Lz")
+
     var Myprofilebutton = document.createElement('a');
     var EditButton = document.createElement('a');
     var VKIDButton = document.createElement('a');
@@ -148,7 +150,10 @@ AccountSwitcherButton.innerHTML += `<div class="menu_item_icon"><svg fill="none"
         parentlnk.insertBefore(EditButton, setlnk)
         parentlnk.insertBefore(VKIDButton, setlnk)
         parentlnk.insertBefore(AccountSwitcherButton, AccountSwticherDiv)
-    }
+        if (VKNextMenuA != null) {parentlnk.insertBefore(VKNextMenuA, setlnk);}
+        else console.log("No vk next? :skill:");
+
+        }
         }
 const AltMenuCss = document.createElement('style');
 AltMenuCss.innerHTML = `
