@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VK By Teaspwn
 // @namespace    https://github.com/teaspwn/vk-old-ui-2016-2020
-// @version      1.5
+// @version      1.6
 // @description  VK By Teaspwn
 // @author       Teaspwn
 // @match        *://*.vk.com/*
@@ -58,7 +58,7 @@ window.onload = function () {
 function initial() {
     console.log('VK By Teaspwn Загружен');
     topmenu();
-    if (teaOptions.RemoveReactions) {Reactioncss();}
+    AltCss();
     if (teaOptions.MenuName) {TopName();}
     }
 if (teaOptions.RemoveReactions) {
@@ -83,16 +83,6 @@ window.addEventListener('scroll', function () {
         }
     });
 });
-}
-function Reactioncss() {
-const reactcss = document.createElement('style');
-reactcss.innerHTML = `
-      .ReactionsMenuPopper,.fans_fanph_reaction,li#likes_tab_reactions_0, li#likes_tab_reactions_1, li#likes_tab_reactions_2, li#likes_tab_reactions_3, li#likes_tab_reactions_4, li#likes_tab_reactions_5,.ui_tab.ui_tab_group {
-        display: none !important;
-        }
-    `;
-reactcss.classList = 'RemoveReactions';
-document.head.appendChild(reactcss);
 }
 // Меню и Имя возле иконки
 function TopName() {
@@ -151,31 +141,11 @@ AccountSwitcherButton.innerHTML += `<div class="menu_item_icon"><svg fill="none"
         parentlnk.insertBefore(VKIDButton, setlnk)
         parentlnk.insertBefore(AccountSwitcherButton, AccountSwticherDiv)
         if (VKNextMenuA != null) {parentlnk.insertBefore(VKNextMenuA, setlnk);}
-        else console.log("No vk next? :skill:");
+        else console.log("No vk next? :skull:");
 
         }
         }
-const AltMenuCss = document.createElement('style');
-AltMenuCss.innerHTML = `
-#top_profile_menu.top_profile_menu_new {width:300px;}
-#react_rootEcosystemMultiAccountsEntry {
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
-    -webkit-transition: opacity 100ms linear,top 100ms linear,bottom 100ms linear,visibility 100ms linear;
-    transition: opacity 100ms linear,top 100ms linear,bottom 100ms linear,visibility 100ms linear;
-}
-#react_rootEcosystemMultiAccountsEntry.active {opacity: 1;height: auto;}
-.accswitcharrow {
-    height: 23px;
-    margin-left: auto;
-    margin-right: 0;
-    color: var(--vkui--color_icon_secondary);
-}
-#top_accswitch_link.active .accswitcharrow {transform: rotate(90deg);}
-    `;
-AltMenuCss.classList = 'AltMenuCSS';
-document.head.appendChild(AltMenuCss);
+
 }
  function showSwitcher(event) {
 var Menu = document.getElementById("top_profile_menu");
@@ -189,19 +159,6 @@ var AccountSwticherButton = document.getElementById("top_accswitch_link");
     AccountSwticherButton.classList.remove("active");
   }
 }
-const customcss = document.createElement('style');
-customcss.innerHTML = `
-      .top_profile_name {
-    padding-right: 10px;
-    display: inline-block;
-    vertical-align: top;
-    font-weight: 500;
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: auto;
-}
-    `;
-customcss.classList = 'VKByTeaspwnCSS';
-document.head.appendChild(customcss);
 var KPP
 KPP = {
     _list: [],
@@ -288,3 +245,43 @@ KPP = {
         }
     }
 };
+function AltCss() {
+    document.head.insertAdjacentHTML("beforeend", `
+    <style id="VKByTeaspwnCSS">
+    .top_profile_name {
+    padding-right: 10px;
+    display: inline-block;
+    vertical-align: top;
+    font-weight: 500;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+    </style>
+    `);
+    if (teaOptions.AltMenuButtons) document.head.insertAdjacentHTML("beforeend", `
+    <style id="AltAccountMenu">
+#react_rootEcosystemMultiAccountsEntry {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: opacity 100ms linear,top 100ms linear,bottom 100ms linear,visibility 100ms linear;
+    transition: opacity 100ms linear,top 100ms linear,bottom 100ms linear,visibility 100ms linear;
+}
+#react_rootEcosystemMultiAccountsEntry.active {opacity: 1;height: auto;}
+.accswitcharrow {
+    height: 23px;
+    margin-left: auto;
+    margin-right: 0;
+    color: var(--vkui--color_icon_secondary);
+}
+#top_accswitch_link.active .accswitcharrow {transform: rotate(90deg);}
+    </style>
+    `);
+   if (teaOptions.RemoveReactions) document.head.insertAdjacentHTML("beforeend", `
+    <style id="RemoveReactions">
+      .ReactionsMenuPopper,.fans_fanph_reaction,li#likes_tab_reactions_0, li#likes_tab_reactions_1, li#likes_tab_reactions_2, li#likes_tab_reactions_3, li#likes_tab_reactions_4, li#likes_tab_reactions_5,.ui_tab.ui_tab_group {
+        display: none !important;
+        }
+    </style>
+    `);
+    };
